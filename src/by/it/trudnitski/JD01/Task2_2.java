@@ -7,23 +7,30 @@ public class Task2_2 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println(" Введите возраст дракона ");
+        System.out.println(" Enter dragon age ");
         int year = sc.nextInt();
-        int start = 3;
+        howMuchHeadsAndEyes(year);
+    }
+
+    private static void howMuchHeadsAndEyes(int year) {
+        int head = 3;
+        int eyes;
+        int countEyesOnHead = 2;
         int _200 = 3 * 200;
         int _200_300 = 100 * 2;
-        int result;
 
         if (year <= 200) {
-            result = year * 3 + start;
-            System.out.println("У дракона " + result + " голов ");
+            head += year * 3;
+            eyes = head * countEyesOnHead;
+            System.out.println(" Dragon have " + head + " heads and " + eyes + " eyes ");
         } else if (year <= 300) {
-            result = _200 + start + ((year - 200) * 2);
-            System.out.println("У дракона " + result + " голов ");
+            head += _200 + ((year - 200) * 2);
+            eyes = head * countEyesOnHead;
+            System.out.println(" Dragon have " + head + " heads and " + eyes + " eyes ");
         } else {
-            result = _200 + _200_300 + start + (year - 300);
-            System.out.println(" У дракона " + result + " голов ");
+            head += _200 + _200_300 + (year - 300);
+            eyes = head * countEyesOnHead;
+            System.out.println(" Dragon have " + head + " heads and " + eyes + " eyes ");
         }
-
     }
 }

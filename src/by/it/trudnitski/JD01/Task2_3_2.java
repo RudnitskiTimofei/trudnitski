@@ -6,9 +6,13 @@ public class Task2_3_2 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println(" Введите гласную букву ");
+        System.out.println(" Enter the vowel ");
         char input = sc.nextLine().toLowerCase().toCharArray()[0];
-        char[] variant = {'ё', 'у', 'е', 'ы', 'а', 'о', 'э', 'я', 'и', 'ю'};
+        isVowel(input);
+    }
+
+    private static void isVowel(char input) {
+        char[] variant = {'a', 'e', 'y', 'u', 'i','o'};
         boolean flag = false;
         for (char c : variant) {
             if (c == input) {
@@ -16,9 +20,9 @@ public class Task2_3_2 {
             }
         }
         if (flag) {
-            System.out.println(" Символ является гласной буквой ");
+            System.out.println(" Symbol is vowel ");
         } else {
-            System.out.println(" Симвой не является гласной буквой ");
+            System.out.println(" Symbol is not vowel ");
         }
     }
 }
