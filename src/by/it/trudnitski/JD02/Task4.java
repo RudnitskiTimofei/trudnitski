@@ -9,32 +9,34 @@ public class Task4 {
         int a = sc.nextInt();
         System.out.println(" Enter second number: ");
         int b = sc.nextInt();
-        friendlyOrNot(a, b);
+        friendlyNumbers(a, b);
 
     }
 
-    private static void friendlyOrNot(int a, int b) {
-        int halfA = a / 2;
-        int halfB = b / 2;
-        int resultA = 0;
-        int resultB = 0;
+    private static void friendlyNumbers(int a, int b) {
+        int count = 0;
 
-        for (int i = 1; i <= halfA; i++) {
-            if (a % i == 0) {
-                resultA += i;
+        for (int i = a; i < b; i++) {
+            for (int j = a + 1; j < b; j++) {
+                if ((findSum(j) == i) & (findSum(i) == j)) {
+                    System.out.println(i + " and " + j + " Are friendly numbers ");
+                    count++;
+                }
             }
         }
+        if (count == 0) {
+            System.out.println(" in this zone haven't friendly numbers ");
+        }
+    }
 
-        for (int j = 1; j <= halfB; j++) {
-            if (b % j == 0) {
-                resultB += j;
+    private static int findSum(int number) {
+        int sum = 0;
+
+        for (int i = 1; i < number; i++) {
+            if (number % i == 0) {
+                sum += i;
             }
         }
-
-        if (resultA == b & resultB == a) {
-            System.out.println(" numbers is friendly ");
-        } else {
-            System.out.println(" numbers is not friendly ");
-        }
+        return sum;
     }
 }
