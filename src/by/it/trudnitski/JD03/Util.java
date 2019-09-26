@@ -14,11 +14,11 @@ class Util {
         Random random = new Random();
         double[][] array = new double[x][y];
 
-            for (int i = 0; i < x; i++) {
-                for (int j = 0; j < y; j++) {
-                    array[i][j] = random.nextDouble();
-                }
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                array[i][j] = random.nextDouble();
             }
+        }
         return array;
     }
 
@@ -72,7 +72,7 @@ class Util {
         return trans;
     }
 
-    static void printer(double[][] array) {
+    static void arrayPrinter(double[][] array) {
         int count = 0;
 
         for (int i = 0; i < array.length; i++) {
@@ -85,5 +85,54 @@ class Util {
             }
         }
         System.out.println();
+    }
+
+    static double localMin(double array[][]) {
+        int row = array.length;
+        int column = array[0].length;
+
+        if ((row > 0) & (column > 0)) {
+
+            for (int i = 0; i < array.length; i++) {
+
+                for (int j = 0; j < array[0].length; j++) {
+
+                    if ((i != 0) & (j !=0) & (i != row - 1) & (j != column - 1)){
+                        if ((array[i][j] < array[i + 1][j]) && (array[i][j] < array[i - 1][j])
+                                                               && (array[i][j] < array[i][j + 1])
+                                                               && (array[i][j] < array[i + 1][j - 1])){
+                            System.out.println(" First local minimum: " + i + " " + j );
+                            return array[i][j];
+                        }
+                    }
+                }
+            }
+            System.out.println();
+        }
+        return -1.0;
+    }
+
+    static double localMax(double array[][]) {
+        int row = array.length;
+        int column = array[0].length;
+
+        if ((row > 0) & (column > 0)) {
+
+            for (int i = 0; i < array.length; i++) {
+                for (int j = 0; j < array[0].length; j++) {
+
+                    if ((i != 0) & (j !=0) & (i != row - 1) & (j != column - 1)){
+                        if ((array[i][j] > array[i + 1][j]) && (array[i][j] > array[i - 1][j])
+                                && (array[i][j] > array[i][j + 1])
+                                && (array[i][j] > array[i + 1][j - 1])){
+                            System.out.println(" First local minimum: " + i + " " + j );
+                            return array[i][j];
+                        }
+                    }
+                }
+            }
+            System.out.println();
+        }
+        return -1.0;
     }
 }

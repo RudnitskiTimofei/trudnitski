@@ -10,14 +10,13 @@ public class Task4 {
         System.out.println(" Enter second number: ");
         int b = sc.nextInt();
         friendlyNumbers(a, b);
-
     }
 
     private static void friendlyNumbers(int a, int b) {
         int count = 0;
 
         for (int i = a; i < b; i++) {
-            for (int j = a + 1; j < b; j++) {
+            for (int j = a + 1; j <= b; j++) {
                 if ((findSum(j) == i) & (findSum(i) == j)) {
                     System.out.println(i + " and " + j + " Are friendly numbers ");
                     count++;

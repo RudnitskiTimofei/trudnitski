@@ -8,13 +8,6 @@ public class Task2 {
         System.out.println(" Enter 2 natural numbers: ");
         int number = sc.nextInt();
         int number2 = sc.nextInt();
-        simpleOrNot(number);
-        simpleDiv(number);
-        maxDigit(number);
-        nok(number, number2);
-        nod(number, number2);
-        isPallindrom(number);
-        countOfDigits(number);
         printer(number, number2);
     }
 
