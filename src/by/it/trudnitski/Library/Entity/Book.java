@@ -1,4 +1,4 @@
-package by.it.trudnitski.Library;
+package by.it.trudnitski.Library.Entity;
 
 public class Book extends AbstractBook {
     private String author;
@@ -23,6 +23,6 @@ public class Book extends AbstractBook {
 
     @Override
     public String toString() {
-        return "Book [author = " + getAuthor() + ", title = " + getTitle() + ", pages =  " + getPages() + " genre " + getGenre() +  " year" + getYear() + "]";
+        return " Book author - " + getAuthor() + ", title - " + getTitle() + ", pages -  " + getPages() + ", genre - " + getGenre() +  ", year - " + getYear();
     }
 }

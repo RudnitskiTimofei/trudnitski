@@ -1,4 +1,4 @@
-package by.it.trudnitski.Library;
+package by.it.trudnitski.Library.Entity;
 
 public class AbstractBook {
 
@@ -9,6 +9,7 @@ public class AbstractBook {
     public AbstractBook(String title, int pages, String genre) {
         this.title = title;
         this.pages = pages;
+        this.genre=genre;
     }
 
     public String getTitle() {
