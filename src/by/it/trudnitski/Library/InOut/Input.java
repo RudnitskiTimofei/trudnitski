@@ -1,5 +1,6 @@
 package by.it.trudnitski.Library.InOut;
 
+import by.it.trudnitski.Library.Entity.AbstractBook;
 import by.it.trudnitski.Library.Entity.Book;
 import by.it.trudnitski.Library.Entity.Magazine;
 
@@ -13,7 +14,7 @@ public class Input {
     public static ArrayList books = new ArrayList();
 
     public static ArrayList readFile(String filename) {
-        try(BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String text;
             String title;
             String author;
@@ -21,21 +22,23 @@ public class Input {
             int year;
             int pages;
             int month;
+            int id;
 
             while ((text = reader.readLine()) != null) {
 
                 String[] lines = text.split(";");
-                title = lines[0].trim();
-                author = lines[1].trim();
-                year = Integer.parseInt(lines[2].trim());
-                pages = Integer.parseInt(lines[3].trim());
-                genre = lines[4].trim();
-                month = Integer.parseInt(lines[5].trim());
-                if (month == 0) {
+                id = Integer.parseInt(lines[0].trim());
+                title = lines[1].trim();
+                author = lines[2].trim();
+                year = Integer.parseInt(lines[3].trim());
+                pages = Integer.parseInt(lines[4].trim());
+                genre = lines[5].trim();
+                month = Integer.parseInt(lines[6].trim());
 
-                    books.add(new Book(title, author, year, pages, genre));
+                if (month == 0) {
+                    books.add(new Book(id, title, author, year, pages, genre));
                 } else {
-                    books.add(new Magazine(title,year, pages, genre, month));
+                    books.add(new Magazine(id, title, year, pages, genre, month));
                 }
             }
         } catch (FileNotFoundException e) {

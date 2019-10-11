@@ -20,6 +20,10 @@ public class Runner {
         Printer.printListOfBooks((ArrayList) Sort.sortByTitles(books));
         System.out.println();
         Printer.printListOfBooks((ArrayList)Sort.sortByPages(books));
+        System.out.println();
+        Printer.printListOfBooks((ArrayList) Sort.sortByTitlesAndGenre(books));
+        System.out.println();
+        Printer.printListOfBooks((ArrayList) Sort.findOneBookFromList(books,"Tree mushketir","Imagine Literature"));
 
 
     }

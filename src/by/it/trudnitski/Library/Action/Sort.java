@@ -1,8 +1,6 @@
 package by.it.trudnitski.Library.Action;
 
-import by.it.trudnitski.Library.Action.Comparator.ComparatorByAuthor;
 import by.it.trudnitski.Library.Entity.AbstractBook;
-import by.it.trudnitski.Library.Entity.Book;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -17,13 +15,22 @@ public class Sort {
 
     }
 
-    public static List<AbstractBook> sortByTitles(ArrayList<AbstractBook> arrayList){
+    public static List<AbstractBook> sortByTitles(ArrayList<AbstractBook> arrayList) {
         return arrayList.stream().sorted(((o1, o2) -> o1.getTitle().compareToIgnoreCase(o2.getTitle()))).collect(Collectors.toList());
 
     }
 
-    public static List<AbstractBook> sortByPages(ArrayList<AbstractBook> arrayList){
+    public static List<AbstractBook> sortByPages(ArrayList<AbstractBook> arrayList) {
         return arrayList.stream().sorted(Comparator.comparing(AbstractBook::getPages)).collect(Collectors.toList());
+    }
+
+    public static List<AbstractBook> sortByTitlesAndGenre(ArrayList<AbstractBook> arrayList) {
+        return arrayList.stream().sorted(Comparator.comparing(AbstractBook::getTitle).thenComparing(AbstractBook::getGenre)).collect(Collectors.toList());
+    }
+
+    public static List findOneBookFromList(ArrayList<AbstractBook> arrayList, String title, String genre) {
+        List<AbstractBook> collect = arrayList.stream().filter(o -> o.getGenre().equals(genre)).collect(Collectors.toList());
+        return collect.stream().filter(o -> o.getTitle().equals(title)).collect(Collectors.toList());
     }
 
 }

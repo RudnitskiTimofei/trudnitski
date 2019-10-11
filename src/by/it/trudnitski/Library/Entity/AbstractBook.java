@@ -5,11 +5,13 @@ public class AbstractBook {
     private String title;
     private int pages;
     private String genre;
+    private int id;
 
-    public AbstractBook(String title, int pages, String genre) {
+    public AbstractBook(int id, String title, int pages, String genre) {
+        this.id = id;
         this.title = title;
         this.pages = pages;
-        this.genre=genre;
+        this.genre = genre;
     }
 
     public String getTitle() {
@@ -22,5 +24,9 @@ public class AbstractBook {
 
     public String getGenre() {
         return genre;
+    }
+
+    public int getId() {
+        return id;
     }
 }

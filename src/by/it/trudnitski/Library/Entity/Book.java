@@ -5,24 +5,24 @@ public class Book extends AbstractBook {
     private int year;
 
 
-    public Book(String title, String author, int year, int pages, String genre ){
-        super(title, pages, genre);
-        this.author=author;
+    public Book(int id, String title, String author, int year, int pages, String genre) {
+        super(id, title, pages, genre);
+        this.author = author;
         this.year = year;
 
     }
 
 
-    public String getAuthor() {
+    private String getAuthor() {
         return author;
     }
 
-    public int getYear() {
+    private int getYear() {
         return year;
     }
 
     @Override
     public String toString() {
-        return " Book author - " + getAuthor() + ", title - " + getTitle() + ", pages -  " + getPages() + ", genre - " + getGenre() +  ", year - " + getYear();
+        return " Book id - " + getId() + " ,author" + getAuthor() + ", title - " + getTitle() + ", pages -  " + getPages() + ", genre - " + getGenre() + ", year - " + getYear();
     }
 }
