@@ -47,6 +47,7 @@ public class SortTest {
 
     @Test
     public void findOneBookFromList() {
-        Assert.assertEquals(testing.get(2),Sort.findOneBookFromList(testing,"Wild Weather","Science Literature").get(0));
+        Assert.assertEquals(testing.get(2),
+                Sort.findOneBookFromList(testing,"Wild Weather","Science Literature").get(0));
     }
 }

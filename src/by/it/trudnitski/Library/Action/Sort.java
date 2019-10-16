@@ -2,7 +2,6 @@ package by.it.trudnitski.Library.Action;
 
 import by.it.trudnitski.Library.Entity.Library;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,8 +27,9 @@ public class Sort {
         return book.stream().sorted(Comparator.comparing(Library::getPages)).collect(Collectors.toList());
     }
 
-    public static List<Library> sortByGenreAndPages(List<Library> books){
-        return books.stream().sorted(Comparator.comparing(Library::getGenre).thenComparing(Library::getPages)).collect(Collectors.toList());
+    public static List<Library> sortByGenreAndPages(List<Library> books) {
+        return books.stream().sorted(Comparator.comparing(Library::getGenre)
+                .thenComparing(Library::getPages)).collect(Collectors.toList());
     }
 
     public static List findOneBookFromList(List<Library> book, String title, String genre) {
@@ -38,7 +38,7 @@ public class Sort {
         return collect.stream().filter(o -> o.getTitle().equals(title)).collect(Collectors.toList());
     }
 
-    public static void sortByComparator(Comparator comparator){
+    public static void sortByComparator(Comparator comparator) {
         books.sort(comparator);
         for (Library book : books) {
             System.out.println(book);
