@@ -1,12 +1,10 @@
 package by.it.trudnitski.Library.Action;
 
+import by.it.trudnitski.Library.Action.Comparator.ComparatorByTitle;
 import by.it.trudnitski.Library.Entity.Library;
-
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static by.it.trudnitski.Library.InOut.Input.books;
 
 public class Sort {
 
@@ -17,10 +15,9 @@ public class Sort {
     }
 
     public static List<Library> sortByTitles(List<Library> book) {
-
-        return book.stream().sorted(((o1, o2) -> o1.getTitle().compareToIgnoreCase(o2.getTitle()))).
-                collect(Collectors.toList());
-
+        Comparator comparator = new ComparatorByTitle();
+        book.sort(comparator);
+        return book;
     }
 
     public static List<Library> sortByPages(List<Library> book) {
@@ -36,13 +33,6 @@ public class Sort {
         List<Library> collect = book.stream().filter(o -> o.getGenre().equals(genre)).
                 collect(Collectors.toList());
         return collect.stream().filter(o -> o.getTitle().equals(title)).collect(Collectors.toList());
-    }
-
-    public static void sortByComparator(Comparator comparator) {
-        books.sort(comparator);
-        for (Library book : books) {
-            System.out.println(book);
-        }
     }
 
 }

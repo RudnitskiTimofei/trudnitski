@@ -20,23 +20,15 @@ public class Book extends Library {
         if (this == obj) {
             return true;
         }
-        if (obj == null) {
-            return false;
-        }
-        if (this.getClass() != obj.getClass()) {
+        if (obj == null && this.getClass() != obj.getClass()) {
             return false;
         }
         Book book = (Book) obj;
-        if (this.getId() == book.getId()) {
-            return true;
-        }
-        if (this.getAuthor() == book.getAuthor()) {
-            return true;
-        }
-        if (this.getYear() == book.getYear()) {
-            return true;
-        }
-        return false;
+        return getPages() == book.getPages() && getId() == book.getId()
+                && getYear() == book.getYear()
+                && getTitle().equals(book.getTitle())
+                && getGenre().equals(book.getGenre())
+                && getAuthor().equals(book.getAuthor());
     }
 
     @Override

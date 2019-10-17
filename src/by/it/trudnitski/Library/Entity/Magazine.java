@@ -35,25 +35,14 @@ public class Magazine extends Library {
         if (this == obj) {
             return true;
         }
-        if (obj == null) {
-            return false;
-        }
-        if (this.getClass() != obj.getClass()) {
+        if (obj == null && this.getClass() != obj.getClass()) {
             return false;
         }
         Magazine magazine = (Magazine) obj;
-        if (this.getId() == magazine.getId()) {
-            return true;
-        }
-        if (this.getId() == magazine.getId()) {
-            return true;
-        }
-        if (this.getPages() == magazine.getPages()) {
-            return true;
-        }
-        if (this.getMonthNumber() == magazine.getMonthNumber()) {
-            return true;
-        }
-        return false;
+        return getPages() == magazine.getPages() && getId() == magazine.getId()
+                && getYear() == magazine.getYear()
+                && getTitle().equals(magazine.getTitle())
+                && getGenre().equals(magazine.getGenre())
+                && getMonthNumber() == magazine.getMonthNumber();
     }
 }

@@ -41,40 +41,25 @@ public abstract class Library {
     public int hashCode() {
         final int pr = 31;
         int result = 1;
-        result = pr*result+getId();
-        result = pr*result + getPages();
-        result = pr*result + ((getTitle()==null)?0:getTitle().hashCode());
+        result = pr * result + getId();
+        result = pr * result + getPages();
+        result = pr * result + ((getTitle() == null) ? 0 : getTitle().hashCode());
         return result;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj){
+        if (this == obj) {
             return true;
         }
-        if(obj==null){
-            return false;
-        }
-        if(this.getClass()!=obj.getClass()){
+        if ((obj == null) && (this.getClass() != obj.getClass())) {
             return false;
         }
         Book book = (Book) obj;
-        if (this.getId()==book.getId()){
-            return true;
-        }
-        if (this.getYear()==book.getYear()){
-            return true;
-        }
-        if (this.getGenre()==book.getGenre()){
-            return true;
-        }
-        if (this.getPages()==((Book) obj).getPages()){
-            return true;
-        }
-        if (this.getTitle()==((Book) obj).getTitle()){
-            return true;
-        }
-        return false;
+        return getPages() == book.getPages() && getId() == book.getId()
+                && getYear() == book.getYear()
+                && getTitle().equals(book.getTitle())
+                && getGenre().equals(book.getGenre());
     }
 
     @Override

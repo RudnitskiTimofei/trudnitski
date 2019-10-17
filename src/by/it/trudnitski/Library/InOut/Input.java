@@ -12,63 +12,69 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Input {
-    public static ArrayList<Library> books;
+    public static List<Library> books;
 
     public static List readFile(String filename) {
         books = new ArrayList();
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String text;
-            String title = null;
-            String author = null;
-            String genre = null;
-            int year = 0;
-            int pages = 0;
-            int month = 0;
-            int id = 0;
+            String title;
+            String author;
+            String genre;
+            int year;
+            int pages;
+            int month;
+            int id;
 
             while ((text = reader.readLine()) != null) {
 
                 String[] lines = text.split(";");
-                try{
+                try {
                     id = Integer.parseInt(lines[0].trim());
-                    try{
-
+                    try {
                         title = lines[1].trim();
-                        try{
+                        try {
                             author = lines[2].trim();
-                            try{
+                            try {
                                 year = Integer.parseInt(lines[3].trim());
-                                try{
+                                try {
                                     pages = Integer.parseInt(lines[4].trim());
-                                    try{
+                                    try {
                                         genre = lines[5].trim();
-                                        try{
+                                        try {
                                             month = Integer.parseInt(lines[6].trim());
 
                                         } catch (NumberFormatException e) {
                                             e.printStackTrace();
+                                            throw new NumberFormatException(" Illegal field month");
                                         }
 
-                                    } catch (NumberFormatException e) {
+                                    } catch (Exception e) {
                                         e.printStackTrace();
+                                        throw new Exception(" Illegal field genre ");
                                     }
 
                                 } catch (NumberFormatException e) {
                                     e.printStackTrace();
+                                    throw new NumberFormatException(" Illegal field pages ");
                                 }
 
-                            } catch (NumberFormatException e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
+                                throw new NumberFormatException(" Illegal field year");
                             }
 
-                        } catch (NumberFormatException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
+                            throw new NumberFormatException(" Illegal field author ");
                         }
                     } catch (NumberFormatException e) {
                         e.printStackTrace();
+                        throw new NumberFormatException(" Illegal field title");
                     }
                 } catch (NumberFormatException e) {
                     e.printStackTrace();
+                    throw new NumberFormatException(" Illegal field id ");
                 }
 
 
