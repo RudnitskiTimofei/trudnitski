@@ -25,7 +25,7 @@ public class SortTest {
 
     @Test
     public void findAllPagesCountByGenre() {
-        int res = Sort.findAllPagesCountByGenre(testing,"Imagine Literature");
+        int res = Find.findAllPagesCountByGenre(testing,"Imagine Literature");
         Assert.assertEquals(1049,res);
     }
 
@@ -48,6 +48,6 @@ public class SortTest {
     @Test
     public void findOneBookFromList() {
         Assert.assertEquals(testing.get(2),
-                Sort.findOneBookFromList(testing,"Wild Weather","Science Literature").get(0));
+                Find.findOneBookFromList(testing,"Wild Weather","Science Literature").get(0));
     }
 }

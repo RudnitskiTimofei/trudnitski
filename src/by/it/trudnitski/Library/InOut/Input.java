@@ -3,6 +3,8 @@ package by.it.trudnitski.Library.InOut;
 import by.it.trudnitski.Library.Entity.Book;
 import by.it.trudnitski.Library.Entity.Library;
 import by.it.trudnitski.Library.Entity.Magazine;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Input {
+    private static final Logger LOGGER = LogManager.getLogger(Input.class);
     public static List<Library> books;
 
     public static List readFile(String filename) {
@@ -46,34 +49,41 @@ public class Input {
 
                                         } catch (NumberFormatException e) {
                                             e.printStackTrace();
+                                            LOGGER.error(e);
                                             throw new NumberFormatException(" Illegal field month");
                                         }
 
                                     } catch (Exception e) {
                                         e.printStackTrace();
+                                        LOGGER.error(e);
                                         throw new Exception(" Illegal field genre ");
                                     }
 
                                 } catch (NumberFormatException e) {
                                     e.printStackTrace();
+                                    LOGGER.error(e);
                                     throw new NumberFormatException(" Illegal field pages ");
                                 }
 
                             } catch (Exception e) {
                                 e.printStackTrace();
+                                LOGGER.error(e);
                                 throw new NumberFormatException(" Illegal field year");
                             }
 
                         } catch (Exception e) {
                             e.printStackTrace();
+                            LOGGER.error(e);
                             throw new NumberFormatException(" Illegal field author ");
                         }
                     } catch (NumberFormatException e) {
                         e.printStackTrace();
+                        LOGGER.error(e);
                         throw new NumberFormatException(" Illegal field title");
                     }
                 } catch (NumberFormatException e) {
                     e.printStackTrace();
+                    LOGGER.error(e);
                     throw new NumberFormatException(" Illegal field id ");
                 }
 
@@ -85,10 +95,12 @@ public class Input {
                 }
             }
         } catch (FileNotFoundException e) {
+            LOGGER.error("File is not ready");
             System.out.println(" File is not here! ");
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+            LOGGER.error("I cant to read this file");
         }
         return books;
     }
