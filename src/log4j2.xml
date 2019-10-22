@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<Configuration status="WARN">
+    <Properties>
+        <Property name="APP_LOG_ROOT">logs/</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <RollingFile name="fileLogger" filePattern="${APP_LOG_ROOT}/app %d{yyyy-MM-dd (HH-mm-ss)}.log"
+                     fileName="${APP_LOG_ROOT}/app.log">
+            <ThresholdFilter onMismatch="ACCEPT" onMatch="ACCEPT" level="all"/>
+            <PatternLayout>
+                <pattern>%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="errorLogger" filePattern="${APP_LOG_ROOT}/error-%d{yyyy-MM-dd}.log"
+                     fileName="${APP_LOG_ROOT}/error.log">
+            <PatternLayout>
+                <pattern>%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="loggertest.Main" level="trace" additivity="false">
+            <AppenderRef level="trace" ref="Console"/>
+            <AppenderRef level="info" ref="fileLogger"/>
+            <AppenderRef level="error" ref="errorLogger"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef level="trace" ref="Console"/>
+            <AppenderRef level="info" ref="fileLogger"/>
+            <AppenderRef level="error" ref="errorLogger"/>
+        </Root>
+    </Loggers>
+</Configuration>
